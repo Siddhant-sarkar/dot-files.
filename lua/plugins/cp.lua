@@ -19,7 +19,12 @@ return {
         function()
           local file = vim.fn.expand("%:p")
           local out = vim.fn.expand("%:p:r")
-          local cmd = string.format("g++ -std=c++20 -O2 -Wall -o %s %s && %s", out, file, out)
+          local cmd = string.format(
+            "g++ -std=c++20 -Wall -Wextra -Wno-unused-variable -Wno-unused-const-variable -Wno-unused-parameter -o %s %s && %s",
+            out,
+            file,
+            out
+          )
           require("toggleterm.terminal").Terminal
             :new({
               cmd = cmd,
@@ -37,7 +42,13 @@ return {
           local file = vim.fn.expand("%:p")
           local out = vim.fn.expand("%:p:r")
           local dir = vim.fn.expand("%:p:h")
-          local cmd = string.format("g++ -std=c++20 -O2 -Wall -o %s %s && %s < %s/input.txt", out, file, out, dir)
+          local cmd = string.format(
+            "g++ -std=c++20 -Wall -Wextra -Wno-unused-variable -Wno-unused-const-variable -Wno-unused-parameter -o %s %s && %s < %s/input.txt",
+            out,
+            file,
+            out,
+            dir
+          )
           require("toggleterm.terminal").Terminal
             :new({
               cmd = cmd,
